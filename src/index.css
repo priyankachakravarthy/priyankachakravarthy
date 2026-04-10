@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── DESIGN TOKENS ── */
+@layer base {
+  :root {
+    --bg:          linear-gradient(150deg,#faf9f7 0%,#f3efe8 50%,#ede8e0 100%);
+    --surface:     rgba(255,255,255,0.72);
+    --surface2:    rgba(245,241,235,0.55);
+    --section-alt: rgba(243,239,232,0.5);
+    --border:      rgba(180,160,130,0.22);
+    --border2:     rgba(180,160,130,0.42);
+    --t1: #1c1814;
+    --t2: #3d3228;
+    --t3: #6b5c48;
+    --t4: #9c8570;
+    --t5: #b8a090;
+    --t6: #d4c4b4;
+    --acc1: #8b5e3c;
+    --acc2: #b87c52;
+    --acc3: #d4956a;
+    --acc4: #e8c4a0;
+    --grad:      linear-gradient(135deg,#7a4f2e 0%,#b87c52 55%,#d4956a 100%);
+    --grad-text: linear-gradient(135deg,#5c3820 0%,#8b5e3c 40%,#c4845a 100%);
+    --nav-bg:    rgba(250,249,247,0.88);
+    --input-bg:  rgba(245,241,235,0.7);
+    --card-shadow: 0 1px 3px rgba(100,70,40,0.06), 0 4px 20px rgba(100,70,40,0.05);
+    --btn-shadow:  0 2px 14px rgba(139,94,60,0.32);
+    --switch-track: #d4c4b4;
+    --tag-bg:     rgba(255,255,255,0.82);
+    --tag-text:   #8b5e3c;
+    --tag-border: rgba(180,160,130,0.35);
+  }
+
+  [data-theme="dark"] {
+    --bg:          linear-gradient(150deg,#0e0c0a 0%,#141008 50%,#1a1208 100%);
+    --surface:     rgba(255,255,255,0.045);
+    --surface2:    rgba(255,255,255,0.025);
+    --section-alt: rgba(255,255,255,0.02);
+    --border:      rgba(180,140,90,0.14);
+    --border2:     rgba(180,140,90,0.26);
+    --t1: #f0ebe4;
+    --t2: #d4c4b0;
+    --t3: #a89078;
+    --t4: #7a6450;
+    --t5: #5c4c38;
+    --t6: #3a2e22;
+    --acc1: #d4956a;
+    --acc2: #c4845a;
+    --acc3: #b87c52;
+    --acc4: #3d2a18;
+    --grad:      linear-gradient(135deg,#c4845a 0%,#d4956a 55%,#e8b488 100%);
+    --grad-text: linear-gradient(135deg,#e8c4a0 0%,#d4956a 50%,#c4845a 100%);
+    --nav-bg:    rgba(14,12,10,0.9);
+    --input-bg:  rgba(255,255,255,0.05);
+    --card-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.35);
+    --btn-shadow:  0 2px 16px rgba(180,130,80,0.4);
+    --switch-track: #7a6450;
+    --tag-bg:     rgba(255,255,255,0.055);
+    --tag-text:   #d4956a;
+    --tag-border: rgba(180,140,90,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply font-body antialiased;
+    background: var(--bg);
+    background-attachment: fixed;
+    color: var(--t1);
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+
+  ::selection { background: #b87c52; color: #fff; }
+}
+
+/* ── COMPONENTS ── */
+@layer components {
+  .section-tag {
+    @apply font-mono text-xs tracking-widest uppercase mb-7 flex items-center gap-3;
+    color: var(--acc2);
+  }
+  .section-tag::after {
+    content: '';
+    @apply flex-1 h-px;
+    background: var(--border);
+  }
+
+  .card {
+    background: var(--surface);
+    backdrop-filter: blur(10px);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
+    transition: background 0.35s, border-color 0.3s, box-shadow 0.25s, transform 0.25s;
+  }
+  .card-hover:hover {
+    box-shadow: 0 6px 28px rgba(100,70,40,0.1);
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 font-body font-medium text-sm text-white transition-all duration-200;
+    border-radius: 8px;
+    background: var(--grad);
+    box-shadow: var(--btn-shadow);
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 22px rgba(139,94,60,0.45);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 font-body font-medium text-sm transition-all duration-200;
+    border-radius: 8px;
+    color: var(--t2);
+    border: 0.5px solid var(--border2);
+    background: var(--surface);
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+  }
+  .btn-ghost:hover {
+    background: var(--surface2);
+    color: var(--t1);
+    border-color: var(--acc3);
+  }
+
+  .tag {
+    @apply font-mono text-xs px-2 py-0.5 rounded;
+    background: var(--tag-bg);
+    border: 0.5px solid var(--tag-border);
+    color: var(--tag-text);
+  }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  0%   { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ── MOBILE SPACING ── */
+@media (max-width: 768px) {
+  section { padding-top: 52px !important; padding-bottom: 52px !important; }
+  #hero { padding-top: 64px !important; padding-bottom: 32px !important; min-height: auto !important; }
+}
