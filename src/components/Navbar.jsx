@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { useTheme } from '../ThemeContext'
 
 const links = [
-  { label: 'Experience',    href: '#experience' },
   { label: 'Projects',      href: '#projects' },
+  { label: 'Experience',    href: '#experience' },
   { label: 'Skills',        href: '#skills' },
   { label: 'Certifications',href: '#certifications' },
   { label: 'Activities',    href: '#activities' },

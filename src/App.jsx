@@ -2,8 +2,8 @@ import { ThemeProvider } from './ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Hero from './sections/Hero'
-import Experience from './sections/Experience'
 import Projects from './sections/Projects'
+import Experience from './sections/Experience'
 import Skills from './sections/Skills'
 import Certifications from './sections/Certifications'
 import Activities from './sections/Activities'
@@ -15,8 +15,8 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Experience />
         <Projects />
+        <Experience />
         <Skills />
         <Certifications />
         <Activities />
